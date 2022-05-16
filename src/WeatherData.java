@@ -33,7 +33,10 @@ public class WeatherData extends Observable {
 		this.pressure = pressure;
 		measurementsChanged();
 	}
+	
 	public void measurementsChanged() {
-		notifyObservers();
+		setChanged();
+        notifyObservers();
+
 	}
 }

@@ -1,20 +1,23 @@
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * HeatIndexDisplay
  */
-public class HeatIndexDisplay implements DisplayElement{
+public class HeatIndexDisplay implements DisplayElement, Observer{
     private double heatIndex;
 
-    public HeatIndexDisplay(Observable constObs) {
+    public HeatIndexDisplay() {
     }
-    public void update(Observable obs, Object obj){
-
+    public void update(Observable observable, Object object) {
+            WeatherData wd = (WeatherData) observable;
+            System.out.println("HeatIndex Temp: " + wd.getTemperature());
+        
+        display();
     }
     @Override
     public void display() {
-        // TODO Auto-generated method stub
-        
+        System.out.println("Aktualisiere HeatIndexDisplay");
     }
 
 }

@@ -6,19 +6,25 @@ public class StatisticsDisplay implements DisplayElement, Observer {
     private double minTemp;
     private double tempSum;
     private int numReadings;
+
     StatisticsDisplay(Observable observable) {
 
     }
     
+    public StatisticsDisplay() {
+    }
+
     public void update(Observable observable, Object object) {
-        if (object instanceof WeatherData) {
-            
-        }
+            WeatherData wd = (WeatherData) observable;
+            System.out.println("Temp: " + wd.getTemperature() + " Hum: " + wd.getHumidity() + " Luftdruck: " + wd.getPressure());
+        
         display();
     }
-    public void display() {
 
+    public void display() {
+        System.out.println("Aktualisiere StatisticsDisplay");
     }
+
     public double getMaxTemp() {
         return maxTemp;
     }

@@ -1,3 +1,5 @@
+import java.util.Observer;
+
 /**
  * WeatherStation
  */
@@ -6,6 +8,18 @@ public class WeatherStation {
 
     }
     public static void main(String[] args) {
-     WeatherData my = new WeatherData();   
+       System.out.println("##################################");
+
+        WeatherData weatherData = new WeatherData();
+        Observer statisticsDisplay = new StatisticsDisplay();
+        Observer heatIndexDisplay = new HeatIndexDisplay();
+
+        weatherData.addObserver(statisticsDisplay);
+        weatherData.addObserver(heatIndexDisplay);
+
+        weatherData.setMeasurements(1,1,1);
+        System.out.println("##################################");
+        weatherData.setMeasurements(2,2,2);
+
     }
 }
