@@ -1,5 +1,8 @@
+package Display;
 import java.util.Observable;
 import java.util.Observer;
+
+import Model.WeatherData;
 
 public class StatisticsDisplay implements DisplayElement, Observer {
     private double maxTemp;

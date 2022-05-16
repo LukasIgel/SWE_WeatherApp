@@ -1,5 +1,9 @@
 import java.util.Observer;
 
+import Display.HeatIndexDisplay;
+import Display.StatisticsDisplay;
+import Model.WeatherData;
+
 /**
  * WeatherStation
  */

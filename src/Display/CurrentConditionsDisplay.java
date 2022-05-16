@@ -1,3 +1,5 @@
+package Display;
+
 import java.util.Observable;
 
 public class CurrentConditionsDisplay implements DisplayElement {
