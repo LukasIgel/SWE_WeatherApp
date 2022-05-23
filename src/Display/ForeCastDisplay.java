@@ -23,6 +23,16 @@ public class ForeCastDisplay implements DisplayElement, Observer{
      @Override
     public void display() {
         System.out.println("Aktualisiere ForeCastDisplay: Druckänderung von "+lastPressure+ " zu "+currentPressure);
+        if (lastPressure<currentPressure) {
+            System.out.println("Druck steigt, sieht gut aus.");
+        } else {
+            if (lastPressure>(currentPressure+5)) {
+                System.out.println("Druck fällt rapide, Unwetterwarnung.");
+            } else {
+                System.out.println("Druck fällt leicht, schade.");
+            }
+        }
+
         
     }
     public double getCurrentPressure() {
