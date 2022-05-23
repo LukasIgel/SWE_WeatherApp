@@ -1,0 +1,69 @@
+[33mcommit cf6627eb403ec5206ed7fab29da692fd8c002c0f[m[33m ([m[1;36mHEAD -> [m[1;32mtobibranch[m[33m)[m
+Author: LukasIgel <lukas.igelmund@students.hs-mainz.de>
+Date:   Mon May 23 10:18:22 2022 +0200
+
+    forecast hinzugefügt
+
+[1mdiff --git a/src/Display/ForeCastDisplay.java b/src/Display/ForeCastDisplay.java[m
+[1mindex 78bb150..968237e 100644[m
+[1m--- a/src/Display/ForeCastDisplay.java[m
+[1m+++ b/src/Display/ForeCastDisplay.java[m
+[36m@@ -1,22 +1,30 @@[m
+ package Display;[m
+ import java.util.Observable;[m
+[32m+[m[32mimport java.util.Observer;[m
+[32m+[m
+[32m+[m[32mimport Model.WeatherData;[m
+ [m
+ /**[m
+  * ForeCastDisplay[m
+  */[m
+[31m-public class ForeCastDisplay implements DisplayElement{[m
+[32m+[m[32mpublic class ForeCastDisplay implements DisplayElement, Observer{[m
+     public double currentPressure;[m
+     public double lastPressure;[m
+     [m
+[31m-    public ForeCastDisplay(Observable constObs) {[m
+[32m+[m[32m    public ForeCastDisplay() {[m
+     [m
+     }[m
+[31m-    public void update(Observable myObs, Object obj){[m
+[31m-[m
+[32m+[m[32m    public void update(Observable observable, Object obj){[m
+[32m+[m[32m        WeatherData wd = (WeatherData) observable;[m
+[32m+[m[32m        System.out.println("ForeCast Pressure: " + wd.getPressure());[m
+[32m+[m[32m        lastPressure = currentPressure;[m
+[32m+[m[32m        currentPressure = wd.getPressure();[m
+[32m+[m[32m    display();[m
+     }[m
+      @Override[m
+     public void display() {[m
+[31m-        // TODO Auto-generated method stub[m
+[32m+[m[32m        System.out.println("Aktualisiere ForeCastDisplay:");[m
+[32m+[m[32m        System.out.println("Pressure changed from "+lastPressure+ " to "+currentPressure);[m
+         [m
+     }[m
+     public double getCurrentPressure() {[m
+[1mdiff --git a/src/WeatherStation.java b/src/WeatherStation.java[m
+[1mindex 7c088f9..6484853 100644[m
+[1m--- a/src/WeatherStation.java[m
+[1m+++ b/src/WeatherStation.java[m
+[36m@@ -1,5 +1,6 @@[m
+ import java.util.Observer;[m
+ [m
+[32m+[m[32mimport Display.ForeCastDisplay;[m
+ import Display.HeatIndexDisplay;[m
+ import Display.StatisticsDisplay;[m
+ import Model.WeatherData;[m
+[36m@@ -17,9 +18,10 @@[m [mpublic class WeatherStation {[m
+         WeatherData weatherData = new WeatherData();[m
+         Observer statisticsDisplay = new StatisticsDisplay();[m
+         Observer heatIndexDisplay = new HeatIndexDisplay();[m
+[31m-[m
+[32m+[m[32m        Observer foreCastDisplay = new ForeCastDisplay();[m
+         weatherData.addObserver(statisticsDisplay);[m
+         weatherData.addObserver(heatIndexDisplay);[m
+[32m+[m[32m        weatherData.addObserver(foreCastDisplay);[m
+ [m
+         weatherData.setMeasurements(1,1,1);[m
+         System.out.println("##################################");[m
