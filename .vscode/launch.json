@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch WeatherStation",
+            "request": "launch",
+            "mainClass": "WeatherStation",
+            "projectName": "SWE_WeatherApp_fe58af5"
+        },
+        {
+            "type": "java",
+            "name": "Launch JavaFx file",
+            "request": "launch",
+            "vmArgs": "--module-path C:/Users/schro/Downloads/openjfx-11.0.2_windows-x64_bin-sdk/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "${file}"
+        }
+    ]
+}

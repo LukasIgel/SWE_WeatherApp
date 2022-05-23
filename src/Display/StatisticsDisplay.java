@@ -14,18 +14,20 @@ public class StatisticsDisplay implements DisplayElement, Observer {
 
     }
     
-    public StatisticsDisplay() {
+    public StatisticsDisplay(int maxTemp, int minTemp) {
+        this.maxTemp = maxTemp;
+        this.minTemp = minTemp;
     }
 
     public void update(Observable observable, Object object) {
             WeatherData wd = (WeatherData) observable;
-            System.out.println("Temp: " + wd.getTemperature() + " Hum: " + wd.getHumidity() + " Luftdruck: " + wd.getPressure());
-        
+            //System.out.println("Temp: " + wd.getTemperature() + " Hum: " + wd.getHumidity() + " Luftdruck: " + wd.getPressure());
+            tempSum = wd.getTemperature();
         display();
     }
 
     public void display() {
-        System.out.println("Aktualisiere StatisticsDisplay");
+        System.out.println("Aktualisiere StatisticsDisplay: minTemp="+minTemp+", lastTemp:"+tempSum+", maxTemp="+maxTemp);
     }
 
     public double getMaxTemp() {

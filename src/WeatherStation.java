@@ -16,7 +16,7 @@ public class WeatherStation {
        System.out.println("##################################");
 
         WeatherData weatherData = new WeatherData();
-        Observer statisticsDisplay = new StatisticsDisplay();
+        Observer statisticsDisplay = new StatisticsDisplay(30, -10);
         Observer heatIndexDisplay = new HeatIndexDisplay();
         Observer foreCastDisplay = new ForeCastDisplay();
         weatherData.addObserver(statisticsDisplay);
