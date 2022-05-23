@@ -23,7 +23,7 @@ public class HeatIndexDisplay implements DisplayElement, Observer{
     }
     @Override
     public void display() {
-        System.out.println("Aktualisiere HeatIndexDisplay. heatIndex: " + heatIndex + " Celsius");
+        System.out.println("Aktualisiere HeatIndexDisplay: heatIndex= " + heatIndex + " (Celsius)");
     }
 
 }

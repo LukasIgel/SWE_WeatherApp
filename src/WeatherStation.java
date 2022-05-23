@@ -1,5 +1,6 @@
 import java.util.Observer;
 
+import Display.CurrentConditionsDisplay;
 import Display.ForeCastDisplay;
 import Display.HeatIndexDisplay;
 import Display.StatisticsDisplay;
@@ -19,9 +20,11 @@ public class WeatherStation {
         Observer statisticsDisplay = new StatisticsDisplay(30, -10);
         Observer heatIndexDisplay = new HeatIndexDisplay();
         Observer foreCastDisplay = new ForeCastDisplay();
+        Observer currentConditionsDisplay = new CurrentConditionsDisplay();
         weatherData.addObserver(statisticsDisplay);
         weatherData.addObserver(heatIndexDisplay);
         weatherData.addObserver(foreCastDisplay);
+        weatherData.addObserver(currentConditionsDisplay);
 
         weatherData.setMeasurements(1,1,1);
         System.out.println("##################################");
