@@ -1,22 +1,30 @@
 package Display;
 import java.util.Observable;
+import java.util.Observer;
+
+import Model.WeatherData;
 
 /**
  * ForeCastDisplay
  */
-public class ForeCastDisplay implements DisplayElement{
+public class ForeCastDisplay implements DisplayElement, Observer{
     public double currentPressure;
     public double lastPressure;
     
-    public ForeCastDisplay(Observable constObs) {
+    public ForeCastDisplay() {
     
     }
-    public void update(Observable myObs, Object obj){
-
+    public void update(Observable observable, Object obj){
+        WeatherData wd = (WeatherData) observable;
+        System.out.println("ForeCast Pressure: " + wd.getPressure());
+        lastPressure = currentPressure;
+        currentPressure = wd.getPressure();
+    display();
     }
      @Override
     public void display() {
-        // TODO Auto-generated method stub
+        System.out.println("Aktualisiere ForeCastDisplay:");
+        System.out.println("Pressure changed from "+lastPressure+ " to "+currentPressure);
         
     }
     public double getCurrentPressure() {
